@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🚀 Launch React (Vite)",
+        "type": "pwa-chrome",
+        "request": "launch",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}/frontend"
+      },
+      {
+        "name": "🐍 Launch FastAPI (Backend)",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": [
+          "main:app",
+          "--reload",
+          "--port",
+          "8000"
+        ],
+        "cwd": "${workspaceFolder}/backend",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+  

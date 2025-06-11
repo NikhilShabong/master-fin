@@ -1,0 +1,446 @@
+{
+  "Powerlifting": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Proceed with normal training volume and intensity since no injury limitations are present."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Reduce weight and volume by ~50% and avoid painful lifts, focusing on form and rehab until pain subsides."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Use submaximal loads (~60-70% 1RM) and avoid training to failure to keep intensity in their comfort zone."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Include occasional heavy lifts (up to ~85-90% 1RM) or AMRAP sets since they thrive on high intensity (with close attention to form)."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Limit heavy sets to 1 per session and keep the rest at moderate intensity (~65% 1RM) to prevent excessive fatigue."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Program multiple intense sets (e.g., 3 working sets at ~85% 1RM) and consider an extra training day, as they can handle higher training stress."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "If sleeping <7h/night, cut back training to 2-3 sessions/week and reduce load ~10% to account for poor recovery."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "With a consistent 8h sleep schedule, maintain the planned 3-4 sessions/week and normal intensity since recovery is optimal."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Train later in the day (afternoon/evening) to match an evening-type's energy peaks, instead of early morning sessions."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Train in the morning hours to leverage a morning-type's high early-day alertness for better performance."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Use a simple routine (e.g., 2-3 full-body workouts/week) with clear, short-term goals to accommodate a less disciplined approach."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Implement a detailed 4-day-per-week program with tracked progressive overload, as their discipline supports following a structured plan."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Emphasize basic exercises at light-moderate loads (keeping ~2 reps in reserve) so they achieve success and build confidence before increasing difficulty."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Incorporate advanced variations and near-maximal lifts (occasional singles at RPE 9) to challenge them, as their high competence allows handling complex tasks."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Keep workouts enjoyable with variety and avoid grinding sets (aim for RPE 6-7) to ensure a positive experience and continued motivation."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Since they enjoy exercise, you can add extra volume or challenge sets (e.g., an AMRAP finisher) knowing they'll stay motivated even under strain."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Focus on individual training sessions and self-paced progress tracking."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Encourage partner or group training (e.g., join a club session) to capitalize on their social drive and boost accountability."
+      }
+    }
+  },
+  "Hypertrophy Training": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Proceed with normal training volume and intensity since no injury limitations are present."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Avoid movements that aggravate the injury (swap them for safe alternatives) and drop training load by ~30% while focusing on high-rep, pain-free work until healed."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Favor moderate loads (around 70% 1RM) with higher reps so they can gain muscle without venturing into uncomfortable intensity zones."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Use some heavy compound sets (6-8 reps at ~80-85% 1RM) or advanced intensity techniques (e.g., drop sets) to satisfy their preference for hard effort."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Limit near-failure sets to ~1 per exercise and give longer rest (~2-3 min) so they can handle the volume without excessive fatigue."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Employ higher volume (e.g., 4 sets per exercise to failure) and shorter rests (~60 sec) since they can tolerate intensive training and recover effectively."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "If getting under 7h sleep, keep weekly volume lower (around 10 sets/muscle) and add extra rest days to prevent recovery deficits."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "With consistent 8+ hour sleep, you can utilize higher weekly volume (15+ sets/muscle) and maintain standard training frequency due to strong recovery."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Plan workouts in the late afternoon/evening when an evening-type client feels most energized, rather than forcing early morning sessions."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Schedule training in the morning for a morning-type client, aligning sessions with their natural early-day energy for optimal performance."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Provide a straightforward 3-day split (e.g., push/pull/legs) with some flexibility, as someone less structured will adhere better to a simple plan."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Lay out a detailed 5-day bodybuilding split with tracked progression and milestones, trusting their high organization to follow it consistently."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Start with easily mastered exercises (machines, basic lifts) and ensure they hit attainable rep goals to boost their sense of skill and confidence."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Give them more complex lifts or advanced routines (compound free-weight movements, supersets) since they feel capable and it will keep them challenged."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Include elements they find fun (at least one favorite exercise per session) and avoid overly monotonous routines so that workouts remain pleasant enough to stick with."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Their high enjoyment permits longer or more intense sessions (e.g., adding a burnout set at the end of workouts) as the intrinsic fun keeps them engaged."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Focus on individual training sessions and self-paced progress tracking."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Incorporate social opportunities like group classes or a workout partner a few times a week to leverage their extraversion for added motivation."
+      }
+    }
+  },
+  "HIIT / Fat Loss Focused": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Proceed with normal training volume and intensity since no injury limitations are present."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Replace high-impact exercises with low-impact alternatives (e.g., cycling instead of sprinting) and increase rest intervals to prevent exacerbating the injury."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Utilize moderate-intensity intervals (~70% max effort) rather than all-out sprints, to ensure they remain comfortable and willing to complete the workout."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Program true high-intensity intervals (near 100% effort sprints) and demanding circuits, as they prefer maximal intensity challenges."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Start with shorter high-intensity bouts (15-sec work intervals with ample rest) and limit total HIIT duration (~5 minutes of intense effort) until their tolerance improves."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Incorporate longer or more frequent intervals (e.g., 30-sec high-intensity with brief rests, totaling 10+ min of HIIT work) since they can sustain a higher intensity workload."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "If sleep-deprived (<7h), scale back HIIT to 1-2 sessions/week and do more low-intensity cardio, acknowledging that poor sleep impairs recovery from intense workouts."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "With adequate sleep (8h+ nightly), schedule the standard 3+ HIIT sessions per week, as good sleep supports full recovery and high performance."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Schedule intense workouts later in the day for an evening-type (night owl) so they hit their HIIT sessions when energy and alertness peak."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Have a morning-type client perform HIIT in the early day, taking advantage of their peak alertness in the morning hours for maximum output."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Keep the regimen basic and time-efficient (e.g., 20-minute HIIT routines) and use external accountability (reminders, trainer check-ins) since a less conscientious person may otherwise skip sessions."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Provide a structured weekly schedule (e.g., 5 days of training including 3 HIIT days) with clear targets and tracking, as their high conscientiousness means they'll reliably follow it."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Choose simple HIIT exercises (e.g., stationary bike sprints or basic bodyweight moves) so they can easily perform them and feel accomplished, avoiding any complex drills that might discourage them."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Introduce more complex HIIT routines or skill-based exercises (like plyometric combos or agility drills) because they feel competent and will handle advanced challenges confidently."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Incorporate fun elements (music, gamified circuits) and keep intensity to a tolerable level to ensure a positive experience, knowing enjoyment boosts adherence especially in fat-loss programs."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Because they enjoy exercise, you can mix in very intense circuits or competitive group challenges; their intrinsic enjoyment will drive them to push hard and stay committed."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Focus on individual training sessions and self-paced progress tracking."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Encourage participation in group HIIT classes or team-based fitness challenges, using their social nature to increase motivation and effort."
+      }
+    }
+  },
+  "Cardiovascular Endurance": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Proceed with full training volume (e.g., normal weekly mileage) and intensity since no injury limitations are present."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Reduce running volume by ~50% and replace high-impact sessions with low-impact cardio (cycling, swimming); progress intensity by ~10% weekly as pain allows."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Emphasize longer steady-state cardio at moderate intensity (≈60–70% HRR) and limit high-intensity intervals to keep workouts within their comfort zone."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Incorporate vigorous training (e.g., 1–2 HIIT sessions per week or fast tempo runs) since they enjoy and respond well to higher intensities."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Keep intense bouts brief (30–60 sec intervals) with ample recovery, avoiding prolonged high-intensity efforts due to limited tolerance."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Program extended high-intensity efforts (e.g., 10–20 min near threshold or longer interval sets) as they can sustain and recover from intense exercise."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "If averaging <7 hours sleep, cut weekly training volume by ~20% and add an extra rest day to aid recovery and prevent overtraining."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "If consistently 8+ hours sleep, maintain full planned frequency (e.g., 5 sessions/week) and intensity, as recovery ability is high."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "For evening types (low morningness), schedule key cardio workouts later in the day (late afternoon or early evening) when their energy peaks."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "For morning types (high morningness), schedule main endurance sessions in the morning hours to leverage their high early-day alertness."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Use a simple routine (e.g., 3 fixed cardio days/week with repeatable workouts) to improve adherence for a less structured individual."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Provide a structured plan (e.g., detailed 5-day cardio schedule with progressive mileage) since they will reliably follow and log the program."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Select familiar aerobic exercises and set achievable distance/pace goals (100% success rate) to build confidence and sense of mastery."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Introduce advanced challenges (new routes, pace or distance goals) and occasional self-paced tests, as their high competence allows pushing limits."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Keep intensity moderate (comfortable pace, RPE ~5/10) and include enjoyable modalities (e.g., music, scenic routes) to make sessions pleasant and encouraging."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Add variety and challenges (interval runs, hill workouts) to each week, as they find intense exercise fun and are motivated by the workout experience."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Program mostly solo training (independent runs or rides) and minimal group activities, as they prefer exercising alone and focus better individually."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Incorporate group runs or training partners at least once a week to harness their social motivation and boost accountability."
+      }
+    }
+  },
+  "Athletic Function": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "No injury constraints: perform all planned drills, lifts, and plyometrics at full intensity and volume since they are pain-free."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Avoid high-impact and maximal loads; substitute low-pain exercises (e.g., technique drills, lighter resistance) and delay intense plyometrics until pain subsides."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Focus on moderate-load strength and skill work; keep effort around a comfortable level (no frequent max-effort drills) to match their lower intensity preference."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Include high-intensity elements (e.g., heavy lifts ~85–90% 1RM, short sprints) in the program, as they thrive on and enjoy vigorous, challenging efforts."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Limit the number of all-out sets or sprints (e.g., ≤2 high-intensity sets per exercise) and provide full recovery between them, given their lower tolerance for intensity."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Program multiple intense sets and drills with shorter rest (e.g., repeated sprint or power sets) since they can tolerate and recover from high-effort work."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "With poor sleep (<7h), reduce high-intensity session frequency (e.g., 2 instead of 3 intense days/week) and emphasize recovery modalities to prevent fatigue or injury."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "With adequate sleep (8–9h), proceed with planned training frequency (e.g., 4+ training days/week) and intensity since recovery capacity supports a full workload."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Evening-oriented athletes should train later in the day (sessions scheduled post-3 PM) to capitalize on peak coordination and energy in the evening."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Morning-oriented athletes should train earlier (morning to late-morning sessions) to utilize their peak alertness for complex skills and strength work."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Use broad guidelines rather than a rigid schedule (e.g., \"complete 3 of these 5 exercises\" style sessions) to accommodate a less disciplined personality and still get work done."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Lay out a periodized training plan (detailed mesocycles with specific daily workouts) — their high fitness conscientiousness means they will follow it precisely."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Provide easy early wins: start with basic drills and gradually increase difficulty so they consistently succeed and build competence in their athletic skills."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Give advanced, skill-intensive drills or self-directed challenges, as their strong exercise competence means they seek mastery and can handle tougher tasks confidently."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Incorporate fun, game-like elements and their favorite exercises into training, keeping intensity mild, to ensure positive feelings during workouts and encourage adherence."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "They genuinely enjoy training, so include intense circuits, competitive drills, and varied routines — their high enjoyment will drive them through demanding sessions."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Emphasize individual practice and solo drills; an introverted athlete can focus on personal performance without group sessions and still progress effectively."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Integrate team-based drills or partner workouts weekly to leverage their extraversion — the social interaction will fuel their motivation and effort."
+      }
+    }
+  },
+  "Rehab (Recovery)": {
+    "Lingering Pain / Injury": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "With minimal pain, cautiously increase exercise intensity and range (e.g., add resistance or complexity incrementally) while monitoring to stay pain-free."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Keep all exercises in a pain-free range of motion at low intensity; focus on therapeutic movements and hold off on progression until pain significantly decreases."
+      }
+    },
+    "Exercise Intensity Preference": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Structure rehab with gentle, low-effort activities (stretching, basic mobility) and avoid pushing intensity, aligning with their preference for mild exercise."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "If they prefer higher intensity, introduce carefully controlled challenging drills (within safe limits) to keep them engaged, while ensuring form and safety."
+      }
+    },
+    "Exercise Intensity Tolerance": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Use light resistance and fewer repetitions (e.g., low-weight, 1–2 sets per exercise) because their ability to tolerate intense or prolonged effort is low during rehab."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Leverage their higher tolerance by incorporating moderate resistance and volume (e.g., 3–4 sets, slightly heavier load) as long as exercises remain pain-free and safe."
+      }
+    },
+    "Sleep": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Poor sleep slows healing, so reduce rehab session length or frequency (e.g., 2 sessions/week instead of 3) and prioritize rest and sleep quality improvement."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Good sleep accelerates recovery, so you can plan the full complement of rehab sessions (e.g., 3+/week) and expect better adaptation to the prescribed exercises."
+      }
+    },
+    "Chronotype": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "For an evening-type client, schedule rehab appointments later in the day (afternoon/early evening) when they naturally have more energy and focus."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "For a morning-type client, schedule rehabilitation exercises in the morning hours to take advantage of their peak alertness and consistency early in the day."
+      }
+    },
+    "Conscientiousness": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Keep the rehab regimen very straightforward (only a few key exercises to do daily) and use tools like reminders or check-ins to help a less disciplined client adhere."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Provide a thorough rehab program (detailed exercise list, set/reps, progression targets) – a highly conscientious client will follow through diligently and track their progress."
+      }
+    },
+    "SDT Competence": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Select rehab exercises that guarantee success (simple movements the client can perform well) to bolster their sense of effectiveness and motivation during recovery."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Allow the client more autonomy with challenging rehab tasks (advanced variations, self-monitored progress) since their high competence will drive them to master these and stay motivated."
+      }
+    },
+    "Exercise Enjoyment": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Incorporate enjoyable therapeutic activities (e.g., pool therapy, low-intensity group classes) and keep discomfort minimal, as low exercise enjoyment can hinder rehab adherence."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Use a variety of rehab exercises and even light recreational activities (within rehab scope) to capitalize on their high enjoyment and keep them consistently engaged in recovery."
+      }
+    },
+    "Social Motivation": {
+      "low_score_strategy": {
+        "workout_tailoring_text": "Provide primarily one-on-one or independent rehab sessions; a client low in social motivation will progress well with focused, solo rehabilitation work."
+      },
+      "high_score_strategy": {
+        "workout_tailoring_text": "Include socially engaging rehab options (group therapy sessions or partner exercises) weekly, as an outgoing client will respond positively to peer support and interaction during recovery."
+      }
+    }
+  }
+} 
