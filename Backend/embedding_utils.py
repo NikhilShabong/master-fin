@@ -6,7 +6,7 @@ import numpy as np
 KPI_SYNONYMS = {
     "KPI 1 (Body Positivity)": ["body image", "self-body love", "positive body outlook", "body confidence"],
     "KPI 2 (Self-Esteem Enhancement)": ["confidence boost", "feeling worthy", "self-respect", "self-worth", "self-confidence"],
-    "KPI 3 (Stress reduction)": ["less stress", "manage anxiety", "feeling calmer", "stress relief"],
+    "KPI 3 (Stress Reduction)": ["less stress", "manage anxiety", "feeling calmer", "stress relief"],
     "KPI 4 (Mood Improvement)": ["better mood", "emotional uplift", "feeling happier", "emotional balance"],
     "KPI 5 (Increased Energy Levels)": ["more energy", "boosted energy", "feeling energetic", "higher vitality"],
     "KPI 6 (Improved Sleep Quality)": ["sleep better","better sleep", "deeper rest", "quality sleep", "restful nights"],
