@@ -58,3 +58,44 @@ def call_gpt_workout(prompt):
     except Exception as e:
         print(f"[ERROR] OpenAI API call failed: {e}")
         return "Sorry, I couldn't generate a workout plan at the moment."
+
+
+def call_gpt_aftermath(user_message, tone_spec):
+    """Call GPT for conversational follow-ups without injecting advice.
+
+    Parameters
+    ----------
+    user_message : str
+        The user's last message in the chat.
+    tone_spec : str
+        A short tone description generated for the user.
+
+    Returns
+    -------
+    str
+        The assistant's conversational reply.
+    """
+
+    system_prompt = (
+        "You are a friendly, supportive AI fitness mentor. "
+        "Respond conversationally without giving specialised advice. "
+        f"Maintain this tone: {tone_spec}"
+    )
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_message},
+    ]
+
+    try:
+        client = openai.OpenAI()
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=200,
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"[ERROR] OpenAI API call failed: {e}")
+        return "Sorry, I couldn't respond at the moment."

@@ -2,7 +2,20 @@ import re
 from embedding_utils import fuzzy_match_hybrid, KPI_EMBEDS, TRAIT_EMBEDS
 from embedding_utils import KPI_SYNONYMS, TRAIT_SYNONYMS   # Adjust import as needed
 
-
+def is_decline_followup(user_message: str) -> bool:
+    """Return True if the user is declining a suggested follow-up."""
+    decline_phrases = [
+        "no",
+        "no thanks",
+        "i'm good",
+        "that's enough",
+        "don't need",
+        "not now",
+        "maybe later",
+        "i'm done",
+    ]
+    msg = user_message.strip().lower()
+    return any(phrase in msg for phrase in decline_phrases)
 
 def classify_user_input(user_msg, user_active_kpis):
 
@@ -12,6 +25,8 @@ def classify_user_input(user_msg, user_active_kpis):
     """
 
     msg_lower = user_msg.lower()
+    if is_decline_followup(msg_lower):
+        return "context_6", {}, False
     kpi_hits   = fuzzy_match_hybrid(msg_lower, KPI_EMBEDS)
     trait_hits = fuzzy_match_hybrid(msg_lower, TRAIT_EMBEDS)
 

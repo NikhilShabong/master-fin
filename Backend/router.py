@@ -29,7 +29,7 @@ async def generate_advice_endpoint(payload: AdviceRequest):
             'active_kpis': payload.active_kpis
         }
         # Step 3: Generate the advice
-        advice_payload = generate_advice(context, entities, wants_identity, user_vectors)
+        advice_payload = generate_advice(context, entities, wants_identity, user_vectors, payload.user_input)
         # Step 4: Return everything in a response
         print("Context:", context)
         print("Entities:", entities)

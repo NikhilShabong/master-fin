@@ -1,6 +1,6 @@
 from data_loader import load_kpi_habits, load_habit_specialisation
 from delta_utils import calculate_trait_deltas
-from gpt_caller import call_gpt_advice
+from gpt_caller import call_gpt_advice, call_gpt_aftermath
 from tone_style_builder import build_tone_style
 
 
@@ -121,10 +121,11 @@ def get_snippet_for_trait(kpi, trait, delta_status, wants_identity):
                     return obj['habit']
     return None
 
-def generate_advice(context, entities, wants_identity, user_vectors):
+def generate_advice(context, entities, wants_identity, user_vectors, user_message):
     advice_snippets = []
     trait_deltas = calculate_trait_deltas(user_vectors['current'], user_vectors['future'])
     trait_deltas = {k: v for k, v in trait_deltas.items()}
+    tone_style = build_tone_style(user_vectors['current'], user_vectors['future'])
 
     if context == "context_1":
         kpi = entities['kpis'][0]
@@ -191,12 +192,13 @@ def generate_advice(context, entities, wants_identity, user_vectors):
         context = "context_2"
         # (Let the existing context_2 code below handle advice_snippets, etc.)
 
-
+    # Aftermath mode: purely conversational follow-up with no extra advice
     elif context == "context_6":
-        advice_snippets.append("I can help with fitness and health advice. Ask me about workouts, habits, nutrition, or mindset!")
+        gpt_reply = call_gpt_aftermath(user_message, tone_style)
+        return {"raw_advice": tone_style, "gpt_advice": gpt_reply}
 
     
-    tone_style = build_tone_style(user_vectors['current'], user_vectors['future'])
+    
     final_prompt = tone_style + "\n\n" + "\n".join(advice_snippets)
     gpt_reply = call_gpt_advice(tone_style, "\n".join(advice_snippets))
     return {
