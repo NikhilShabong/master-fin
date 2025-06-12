@@ -15,7 +15,7 @@ def generate_tailored_workout_snippets(current_vector, future_vector, archetype)
             continue
 
         # If user needs to "improve" trait, use low strategy; else use high
-        if future_score > current_score:
+        if abs(future_score - current_score) >= 2:
             strategy = strategies.get("low_score_strategy", {}).get("workout_tailoring_text")
         else:
             strategy = strategies.get("high_score_strategy", {}).get("workout_tailoring_text")

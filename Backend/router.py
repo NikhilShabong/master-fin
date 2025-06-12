@@ -4,7 +4,7 @@ from input_classifier import classify_user_input   # <-- your classifier logic
 from advice_generator import generate_advice       # <-- advice builder
 from workout_generator import generate_tailored_workout_snippets, build_gpt_prompt
 from gpt_caller import call_gpt_advice, call_gpt_workout
-
+from archetype_selector import select_archetype_from_kpis
 
 
 router = APIRouter()
@@ -52,24 +52,27 @@ async def generate_advice_endpoint(payload: AdviceRequest):
 class WorkoutRequest(BaseModel):
     currentVector: dict
     futureVector: dict
-    archetype: str  # e.g., "Powerlifting Beginner"
+    active_kpis: list  # New, to pass user KPIs
 
 @router.post("/generate_workout")
 async def generate_workout_plan(req: WorkoutRequest):
     try:
-        # Generate tailored workout snippets based on user's vectors and archetype
+        # Auto-select archetype based on selected KPIs (req.active_kpis)
+        # Try req.active_kpis, fallback to req.archetype for legacy support
+        user_kpis = getattr(req, "active_kpis", None) or getattr(req, "selectedKpis", None) or []
+        archetype = select_archetype_from_kpis(user_kpis)
         tailored_snippets = generate_tailored_workout_snippets(
-            req.currentVector, req.futureVector, req.archetype
+            req.currentVector, req.futureVector, archetype
         )
         
         # Build the GPT prompt using the tailored snippets
-        gpt_prompt = build_gpt_prompt(req.archetype, tailored_snippets)
+        gpt_prompt = build_gpt_prompt(archetype, tailored_snippets)
         
         # Call GPT with the new workout-specific function
         gpt_response = call_gpt_workout(gpt_prompt)
         
         return {
-            "archetype": req.archetype,
+            "archetype": archetype,
             "tailoring_snippets": tailored_snippets,
             "gpt_prompt": gpt_prompt,
             "plan": gpt_response

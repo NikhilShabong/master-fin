@@ -123,3 +123,4 @@ def fuzzy_match_hybrid(user_input, emb_dict, thresh_full=0.82, thresh_partial=0.
 if __name__ == "__main__":
     print("Testing trait matcher for 'stick to habits':")
     print(fuzzy_match_hybrid("stick to habits", TRAIT_EMBEDS))
+

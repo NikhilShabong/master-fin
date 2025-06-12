@@ -22,7 +22,7 @@ def select_archetype_from_kpis(selected_kpis):
     Accepts a list of user KPIs and returns the most relevant archetype (by majority or by predefined priority).
     """
     if not selected_kpis:
-        return "Hypertrophy Training"  # Default fallback
+        return "Powerlifting"  # Default fallback
 
     counts = {}
     for kpi in selected_kpis:
@@ -34,7 +34,7 @@ def select_archetype_from_kpis(selected_kpis):
     if counts:
         return max(counts.items(), key=lambda x: x[1])[0]
     else:
-        return "Powerlifting Beginner"  # Fallback
+        return "Powerlifting"  # Fallback
 
 # Example usage:
 # selected = ["Body Fat %", "Energy Levels"]

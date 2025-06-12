@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+const [lastArchetype, setLastArchetype] = useState('');
+const [lastTailoringSnippets, setLastTailoringSnippets] = useState([]);
+
 function stripNonScores(vector) {
   const out = {};
   Object.entries(vector).forEach(([k, v]) => {
@@ -58,12 +62,14 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
     const payload = {
       currentVector: stripNonScores(currentVector),
       futureVector,
-      archetype: "Powerlifting Beginner" // TODO: make this dynamic from user selection if needed
+      active_kpis: selectedKpis
     };
 
     try {
       const res = await axios.post("http://localhost:8000/generate_workout", payload);
       setWorkoutPlan(res.data.plan);
+      setLastArchetype(res.data.archetype || '');
+      setLastTailoringSnippets(res.data.tailoring_snippets ? res.data.tailoring_snippets.slice(0, 2) : []);
       setChatHistory(prev => [
         ...prev,
         {
@@ -152,6 +158,32 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
           </div>
         ))}
       </div>
+      
+      {lastArchetype && (
+        <div style={{
+          margin: '20px 0 0 0',
+          padding: '16px',
+          background: '#f6fafd',
+          border: '1px solid #bee3f8',
+          borderRadius: '10px',
+          fontSize: '15px'
+        }}>
+          <b>🏋️‍♂️ Selected Workout Archetype:</b> {lastArchetype}
+          {lastTailoringSnippets.length > 0 && (
+            <>
+              <div style={{ marginTop: '8px' }}><b>🔑 Tailoring Highlights:</b></div>
+              <ul style={{ margin: 0, paddingLeft: '18px' }}>
+                {lastTailoringSnippets.map((snippet, i) => (
+                  <li key={i} style={{ fontSize: '14px', color: '#283040' }}>{snippet}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+      )}
+
+
+
 
       <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
         <button
