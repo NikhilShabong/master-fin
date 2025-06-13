@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
-const [lastArchetype, setLastArchetype] = useState('');
-const [lastTailoringSnippets, setLastTailoringSnippets] = useState([]);
 
 function stripNonScores(vector) {
   const out = {};
@@ -20,6 +16,10 @@ function stripNonScores(vector) {
 }
 
 const Chat = ({ currentVector, futureVector, selectedKpis }) => {
+  const [lastArchetype, setLastArchetype] = useState('');
+  const [lastTailoringSnippets, setLastTailoringSnippets] = useState([]);
+  const [lastTraits, setLastTraits] = useState([]);
+  const [lastKpis, setLastKpis] = useState([]);
   const [input, setInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [workoutPlan, setWorkoutPlan] = useState(null);
@@ -38,6 +38,19 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
       active_kpis: selectedKpis
     };
 
+    if (input.toLowerCase().includes("habit blueprint")) {
+      if (lastTraits.length === 0 || lastKpis.length === 0) {
+        setChatHistory(prev => [
+          ...prev,
+          { sender: 'assistant', text: "Sorry, no context for habit blueprint. Try asking a fitness question first." }
+        ]);
+        setInput('');
+        return;
+      }
+      payload.last_traits = lastTraits;
+      payload.last_kpis = lastKpis;
+    }
+
     try {
       const res = await axios.post('http://localhost:8000/generate_advice', payload);
       setChatHistory(prev => [
@@ -48,6 +61,8 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
           raw: res.data.raw_advice
         }
       ]);
+      setLastTraits(res.data.last_traits || []);
+      setLastKpis(res.data.last_kpis || []);
     } catch (err) {
       setChatHistory(prev => [
         ...prev,
@@ -158,7 +173,14 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
           </div>
         ))}
       </div>
-      
+      {chatHistory.length > 0 &&
+          chatHistory[chatHistory.length - 1].sender === "assistant" &&
+          chatHistory[chatHistory.length - 1].text &&
+          chatHistory[chatHistory.length - 1].text.toLowerCase().indexOf("would you like a detailed habit blueprint") !== -1 && (
+            <div style={{ marginBottom: 16, color: "#3984b5", fontWeight: 500, textAlign: "center" }}>
+              Would you like a detailed habit blueprint? Type <b>habit blueprint</b> to see more.
+          </div>
+      )}
       {lastArchetype && (
         <div style={{
           margin: '20px 0 0 0',

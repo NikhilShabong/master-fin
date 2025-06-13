@@ -36,6 +36,43 @@ def call_gpt_advice(tone, advice_snippets, kpi_name=None, chat_history=None):
         print(f"[ERROR] OpenAI API call failed: {e}")
         return "Sorry, I couldn't generate advice at the moment."
 
+# gpt_caller.py
+
+def call_gpt_habit_blueprint(trait, kpi, blueprint_steps, source=None):
+    """
+    Calls GPT to present the habit blueprint in a user-friendly, step-by-step way.
+    """
+    system_prompt = (
+        "You are a behavioural change coach. "
+        "Present the following science-backed habit blueprint as a positive, step-by-step action plan for the user, "
+        "explaining why each step helps them with their fitness goal. Make it practical, motivational, and easy to follow."
+    )
+    steps_bullet = "\n".join(f"{i+1}. {step}" for i, step in enumerate(blueprint_steps))
+    user_prompt = (
+        f"This is a detailed habit blueprint for {trait} to help the user with {kpi}:\n"
+        f"{steps_bullet}\n"
+        + (f"\nSource: {source}\n" if source else "")
+        + "Write a practical, actionable plan that helps the user implement these steps."
+    )
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ]
+    # For future: you can add chat history to messages here if desired
+    try:
+        client = openai.OpenAI()
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=400
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"[ERROR] OpenAI API call failed: {e}")
+        return "Sorry, I couldn't generate advice at the moment."
+
+
 def call_gpt_workout(prompt):
     """
     Calls the OpenAI GPT API specifically for workout generation.
