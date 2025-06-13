@@ -58,22 +58,23 @@ def filter_direct_traits(kpi_name, trait_list):
     return direct_traits
 
 def get_snippet_for_trait(kpi, trait, delta_status, wants_identity):
+    # Try to get from HABIT_SPEC first for normal habits
     if kpi in HABIT_SPEC and trait in HABIT_SPEC[kpi]:
         spec = HABIT_SPEC[kpi][trait]
-        if wants_identity and 'perspective' in spec:
-            return spec['perspective']
-        elif delta_status == "low":
-            return spec['low_score_strategy']['habit_prompt_text']
-        else:
-            return spec['high_score_strategy']['habit_prompt_text']
-    else:
-        for obj in KPI_HABITS[kpi]:
-            if obj['trait'] == trait:
-                if wants_identity and 'perspective' in obj:
-                    return obj['perspective']
-                else:
-                    return obj['habit']
+        if not wants_identity:
+            if delta_status == "low":
+                return spec['low_score_strategy']['habit_prompt_text']
+            else:
+                return spec['high_score_strategy']['habit_prompt_text']
+    # For perspective output or fallback
+    for obj in KPI_HABITS[kpi]:
+        if obj['trait'] == trait:
+            if wants_identity and 'perspective' in obj:
+                return obj['perspective']
+            elif not wants_identity and 'habit' in obj:
+                return obj['habit']
     return None
+
 
 def generate_advice(context, entities, wants_identity, user_vectors, user_message):
     advice_snippets = []
@@ -197,7 +198,7 @@ def generate_advice(context, entities, wants_identity, user_vectors, user_messag
         prompt_addition = "\n\nWould you like a detailed habit blueprint? Type 'habit blueprint' to see more."
     
     final_prompt = tone_style + "\n\n" + "\n".join(advice_snippets) + prompt_addition
-    gpt_reply = call_gpt_advice(tone_style, [*advice_snippets, prompt_addition], kpi_name=last_kpis[0] if last_kpis else None)
+    gpt_reply = call_gpt_advice(tone_style, [*advice_snippets, prompt_addition], wants_identity, kpi_name=last_kpis[0] if last_kpis else None)
     return {
         "raw_advice": final_prompt.strip(),
         "gpt_advice": gpt_reply,

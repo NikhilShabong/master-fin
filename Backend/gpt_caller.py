@@ -5,19 +5,32 @@ import openai
 # Ensure your OPENAI_API_KEY is set as an environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def call_gpt_advice(tone, advice_snippets, kpi_name=None, chat_history=None):
+def call_gpt_advice(tone, advice_snippets, wants_identity=False, kpi_name=None,  chat_history=None):
     """
     Calls the OpenAI GPT API with a tone and advice prompt.
     Returns the GPT's generated reply.
     """
-    system_prompt = f"You are a fitness coach. Always use this style: {tone}"
-    user_prompt = (
-        f"Below are the science-backed habits and strategies that people who successfully achieve {kpi_name} use.\n"
-        "Please suggest to the user how they can start applying these steps, even if they haven't begun yet.\n"
-        "Frame each suggestion as a positive action they can try—not as something they already do.\n"
-        "Advice to consider:\n"
-        + "\n".join(advice_snippets)
-    )
+    system_prompt = f"You are a fitness coach. Always use this style of talking: {tone}"
+    if wants_identity:
+        user_prompt = (
+            f"You're an expert fitness mindset coach. "
+            "The user wants to understand the best perspective or mindset for success on their goal. "
+            f"Give them a motivating, psychologically supportive insight about {kpi_name if kpi_name else 'their fitness journey'}, "
+            "framing it as an internal perspective to hold, not an action plan or set of steps. "
+            "Be concise and impactful and give output in a conversational style, not a step-by-step plan.\n"
+            "Perspective: " + "\n".join(advice_snippets)
+        )
+        max_tokens = 130  # (Or whatever is appropriate for concise output)
+    else:
+        user_prompt = (
+            f"You're a fitness coach, Below are the science-backed habits and strategies that people who successfully achieve {kpi_name} use.\n"
+            "Please suggest to the user how they can start applying these steps, even if they haven't begun yet.\n"
+            "Give output in a conversational style, not a step-by-step plan.\n"
+            "Frame outputs as a positive action they can try, not as something they already do.\n"
+            "Here are the main points to cover:\n"
+            + "\n".join(advice_snippets)
+        )
+        max_tokens = 220
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt}
@@ -29,7 +42,7 @@ def call_gpt_advice(tone, advice_snippets, kpi_name=None, chat_history=None):
             model="gpt-4",
             messages=messages,
             temperature=0.7,
-            max_tokens=400
+            max_tokens=max_tokens
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -52,7 +65,7 @@ def call_gpt_habit_blueprint(trait, kpi, blueprint_steps, source=None):
         f"This is a detailed habit blueprint for {trait} to help the user with {kpi}:\n"
         f"{steps_bullet}\n"
         + (f"\nSource: {source}\n" if source else "")
-        + "Write a practical, actionable plan that helps the user implement these steps."
+        + "Write a practical, actionable plan that helps the user implement these steps, include the source if a step refers to it"
     )
     messages = [
         {"role": "system", "content": system_prompt},
@@ -65,7 +78,7 @@ def call_gpt_habit_blueprint(trait, kpi, blueprint_steps, source=None):
             model="gpt-4",
             messages=messages,
             temperature=0.7,
-            max_tokens=400
+            max_tokens=600
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -116,7 +129,7 @@ def call_gpt_aftermath(user_message, tone_spec):
     system_prompt = (
         "You are a friendly, supportive AI fitness mentor. "
         "Respond conversationally without giving specialised advice. "
-        f"Maintain this tone: {tone_spec}"
+        f"Maintain this tone always: {tone_spec}"
     )
 
     messages = [
