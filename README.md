@@ -59,4 +59,6 @@ Several JSON files in the `Backend` directory provide habit suggestions, tone st
 
 - The project uses OpenAI's GPT models (see `gpt_caller.py`). Ensure API access before running.
 - The data files are examples and can be expanded to cover more KPIs or traits.
+- This code was made in Cursor IDE, which utalises claude and other LLMs to help with code syntax and formatting
+- I will be writing code updates, in the coming days! 
 
