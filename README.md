@@ -46,6 +46,7 @@ The front‑end entry point is `Frontend/App.jsx` which handles routing between 
    ```
 3. Start the development server:
    ```bash
+   .\venv\Scripts\activate
    npm run dev
    ```
 
