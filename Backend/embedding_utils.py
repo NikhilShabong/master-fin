@@ -3,18 +3,17 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import json
 import os
-from supabase_utils import fetch_cached_embedding, store_cached_embedding
+from supabase_utils import fetch_cached_embedding, store_cached_embedding, get_embedding
 #print("Current working directory:", os.getcwd())
+from supabase_utils import get_embedding
 #print("File exists?", os.path.isfile("Backend/Full_synonyms.json"))
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def get_embedding(text):
-    cached = fetch_cached_embedding(text)
-    if cached:
-        return cached['embedding_vector']
-    embedding = model.encode(text).tolist()
-    store_cached_embedding(text, embedding)
-    return embedding
+#def get_embedding(user_input):
+#    embedding = get_embedding(user_input) # or supabase_utils.get_embedding(user_input)
+#    return embedding
+
+
 
 # Paste your synonym dicts here or import them if in another file
 import json

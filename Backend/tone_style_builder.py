@@ -1,6 +1,18 @@
 # tone_style_builder.py
 from delta_utils import calculate_trait_deltas
 from data_loader import load_tone_spec  # Your tone spec loader
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+import os
+os.environ["OPENAI_API_KEY"] = ""
+print("Loaded OpenAI Key:", os.getenv("OPENAI_API_KEY"))
+# Initialize OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 TONE_SPEC = load_tone_spec()
 
 # 1. Mapping from trait to high-level tone style bucket
@@ -33,18 +45,13 @@ def build_tone_style(current_vec, future_vec):
     chosen_snippets = [v[1] for v in bucket_best.values() if v[1]]
 
     # Synthesize into a single paragraph using LLM (replace with your preferred LLM call if needed)
-    from openai import OpenAI
-    import os # Ensure os is imported
     prompt_sys  = ("You are a tone-compiler. Merge the following tone "
                    "instructions into at most 60 words, remove clashes, "
                    "return one paragraph only.")
     prompt_user = "\n".join(chosen_snippets)
 
-    # Debugging: Print the API Key being used
-    #print(f"OPENAI_API_KEY from os.getenv: {os.getenv('OPENAI_API_KEY')}")
-
-    merged = OpenAI().chat.completions.create(
-        model="gpt-4o-mini",
+    merged = client.chat.completions.create(
+        model="gpt-4",  # Using GPT-4, you can change to "gpt-3.5-turbo" if needed
         messages=[{"role":"system","content":prompt_sys},
                   {"role":"user"  ,"content":prompt_user}]
     ).choices[0].message.content.strip()

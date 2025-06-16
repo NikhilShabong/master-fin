@@ -36,7 +36,9 @@ const Chat = ({ currentVector, futureVector, selectedKpis, userId  }) => {
       current_vector: stripNonScores(currentVector),
       future_vector: futureVector,
       active_kpis: selectedKpis,
-      user_id: userId   // NEW — add this
+      last_kpis: lastKpis,
+      last_traits: lastTraits,
+      user_id: userId
     };
 
     if (input.toLowerCase().includes("habit blueprint")) {
