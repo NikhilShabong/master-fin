@@ -42,11 +42,11 @@ The front‑end entry point is `Frontend/App.jsx` which handles routing between 
 2. Install packages:
    ```bash
    cd Frontend
+   .\venv\Scripts\activate
    npm install
    ```
 3. Start the development server:
    ```bash
-   .\venv\Scripts\activate
    npm run dev
    ```
 
