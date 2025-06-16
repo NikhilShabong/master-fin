@@ -1,9 +1,12 @@
 # gpt_caller.py
 import os
 import openai
+from dotenv import load_dotenv
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Ensure your OPENAI_API_KEY is set as an environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
+#openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def call_gpt_advice(tone, advice_snippets, wants_identity=False, kpi_name=None,  chat_history=None):
     """
@@ -23,10 +26,10 @@ def call_gpt_advice(tone, advice_snippets, wants_identity=False, kpi_name=None, 
         max_tokens = 130  # (Or whatever is appropriate for concise output)
     else:
         user_prompt = (
-            f"You're a fitness coach, Below are the science-backed habits and strategies that people who successfully achieve {kpi_name} use.\n"
+            f"You're a fitness coach, Below are the science-backed habits and strategies that people who successfully achieve {kpi_name} should use.\n"
             "Please suggest to the user how they can start applying these steps, even if they haven't begun yet.\n"
             "Give output in a conversational style, not a step-by-step plan.\n"
-            "Frame outputs as a positive action they can try, not as something they already do.\n"
+            "Do not frame the outputs as something they already do, but an action they can try\n"
             "Here are the main points to cover:\n"
             + "\n".join(advice_snippets)
         )

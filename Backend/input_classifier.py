@@ -9,14 +9,14 @@ def is_habit_blueprint_request(user_message: str) -> bool:
 def is_decline_followup(user_message: str) -> bool:
     """Return True if the user is declining a suggested follow-up."""
     decline_phrases = [
-        "no",
-        "no thanks",
-        "i'm good",
-        "that's enough",
-        "don't need",
-        "not now",
-        "maybe later",
-        "i'm done",
+        "moose",
+#        "no thanks",
+#        "i'm good",
+#        "that's enough",
+#        "don't need",
+#        "not now",
+#        "maybe later",
+#        "i'm done",
     ]
     msg = user_message.strip().lower()
     return any(phrase in msg for phrase in decline_phrases)

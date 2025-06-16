@@ -15,7 +15,7 @@ function stripNonScores(vector) {
   return out;
 }
 
-const Chat = ({ currentVector, futureVector, selectedKpis }) => {
+const Chat = ({ currentVector, futureVector, selectedKpis, userId  }) => {
   const [lastArchetype, setLastArchetype] = useState('');
   const [lastTailoringSnippets, setLastTailoringSnippets] = useState([]);
   const [lastTraits, setLastTraits] = useState([]);
@@ -35,7 +35,8 @@ const Chat = ({ currentVector, futureVector, selectedKpis }) => {
       user_input: input,
       current_vector: stripNonScores(currentVector),
       future_vector: futureVector,
-      active_kpis: selectedKpis
+      active_kpis: selectedKpis,
+      user_id: userId   // NEW — add this
     };
 
     if (input.toLowerCase().includes("habit blueprint")) {

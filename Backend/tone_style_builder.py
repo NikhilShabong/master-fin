@@ -34,10 +34,14 @@ def build_tone_style(current_vec, future_vec):
 
     # Synthesize into a single paragraph using LLM (replace with your preferred LLM call if needed)
     from openai import OpenAI
+    import os # Ensure os is imported
     prompt_sys  = ("You are a tone-compiler. Merge the following tone "
                    "instructions into at most 60 words, remove clashes, "
                    "return one paragraph only.")
     prompt_user = "\n".join(chosen_snippets)
+
+    # Debugging: Print the API Key being used
+    #print(f"OPENAI_API_KEY from os.getenv: {os.getenv('OPENAI_API_KEY')}")
 
     merged = OpenAI().chat.completions.create(
         model="gpt-4o-mini",

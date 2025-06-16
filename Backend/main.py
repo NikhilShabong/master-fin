@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import datetime, timezone
 from router import router
 import json
 import os               
@@ -75,7 +75,7 @@ async def submit_responses(responses: dict):
     # ✅ Add unique ID and timestamp to each response
     entry = {
         "user_id": str(uuid.uuid4()),  # random unique ID
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "responses": response_data
     }
 

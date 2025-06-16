@@ -6,6 +6,8 @@ from workout_generator import generate_tailored_workout_snippets, build_gpt_prom
 from gpt_caller import call_gpt_advice, call_gpt_workout
 from archetype_selector import select_archetype_from_kpis
 from typing import Optional, List
+from supabase_utils import store_session
+from datetime import datetime, timezone
 
 router = APIRouter()
 
@@ -16,6 +18,7 @@ class AdviceRequest(BaseModel):
     active_kpis: list
     last_kpis: Optional[List[str]] = []
     last_traits: Optional[List[str]] = []
+    user_id: str 
 
 @router.post("/generate_advice")
 async def generate_advice_endpoint(payload: AdviceRequest):
@@ -64,6 +67,24 @@ async def generate_advice_endpoint(payload: AdviceRequest):
         print("Active KPIs:", payload.active_kpis)
         print("Advice (raw):", advice_payload["raw_advice"])
         print("GPT Advice:", advice_payload["gpt_advice"])
+        session_data = {
+            "user_id": payload.user_id,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "user_input": payload.user_input,
+            "context": context,
+            "wants_identity": wants_identity,
+ #           "detected_intent": detected_intent or None,
+            "ambig_token": entities.get("ambig_token", None),
+            "current_vector": user_vectors['current'],
+            "future_vector": user_vectors['future'],
+            "active_kpis": user_vectors['active_kpis'],
+            "last_traits": advice_payload.get("last_traits", []),
+            "last_kpis": advice_payload.get("last_kpis", []),
+            "raw_advice": advice_payload.get("raw_advice", ""),
+            "gpt_advice": advice_payload.get("gpt_advice", ""),
+            "show_habit_blueprint_prompt": advice_payload.get("show_habit_blueprint_prompt", False),
+        }
+        await store_session(session_data)
         return {
             "context": context,
             "entities": entities,
@@ -78,6 +99,8 @@ async def generate_advice_endpoint(payload: AdviceRequest):
         import traceback
         print(traceback.format_exc())  # <-- This will print the FULL traceback in your backend terminal
         raise HTTPException(status_code=500, detail=str(e))
+            # After generating advice for a user:
+
 
 class WorkoutRequest(BaseModel):
     currentVector: dict
